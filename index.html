@@ -34,7 +34,7 @@
                             <li><a>Item 3</a></li>
                         </ul>
                     </div>
-                    <a class="btn btn-ghost text-xl"><img src="assets/logo.webp" alt=""></a>
+                    <a class="btn btn-ghost text-xl font-bold"><img src="assets/logo.webp" alt="">Peddy</a>
                 </div>
                 <div class="navbar-center hidden lg:flex">
                     <ul class="menu menu-horizontal px-1">
@@ -77,22 +77,56 @@
                     it has
                     a.</p>
             </div>
-            <div class="space-x-6 mt-6">
-                <button class=" font-bold p-6 border rounded-lg border-zinc-200 w-72">Dogs</button>
-                <button class="font-bold p-6 border rounded-lg border-zinc-200 w-72">Cats</button>
-                <button class="font-bold p-6 border rounded-lg border-zinc-200 w-72">Rabbits</button>
-                <button class="font-bold p-6 border rounded-lg border-zinc-200 w-72">Birds</button>
 
-            </div>
+            <!-- cetagory -->
+             <nav id="categories" class="flex justify-around mt-6"></nav>
+
             <div class="w-11/12 mx-auto flex justify-between mt-6">
                 <button class="font-bold">Best Deal For You</button>
                 <button class="btn text-white text-l bg-[#0E7A81]">Sort by Price</button>
             </div>
         </section>
+
+        <section id="pets" class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 py-10"></section>
     </main>
 
+
     <!-- Footer Section -->
-    <footer></footer>
+    <footer class="bg-black">
+        <div class="w-11/12 mx-auto flex justify-around py-20">
+            <div>
+                <a class="flex gap-2 text-white text-xl font-bold"><img src="assets/logo.webp" alt="">Peddy</a>
+                <p class="text-[#FFFFFFE6]">Location: av. Washington 165, NY CA <br>54003</p>
+                <p class="text-[#FFFFFFE6]">Phone: +31 85 964 47 25</p>
+                <p class="text-[#FFFFFFE6]">Email: info@yourdomain.com</p>
+                <p class="text-[#FFFFFFE6]">Openings hours: 9.00 AM - 5.00 PM</p>
+            </div>
+
+            <div class="grid grid-cols-1">
+               <a class=" text-white text-l font-bold">Useful Links</a>
+               <a class="text-[#FFFFFF99]">Home</a>
+               <a class="text-[#FFFFFF99]">About Us</a>
+               <a class="text-[#FFFFFF99]">Animals</a>
+               <a class="text-[#FFFFFF99]">Foundation</a>
+               <a class="text-[#FFFFFF99]">Contact</a>
+            </div>
+             
+                <div class="">
+                    <form class="card-body pt-0">
+                        <div class="">
+                            <p class=" text-white text-l font-bold">Drop a Message</p>
+                        </div>
+                      <div class="form-control">
+                        <input type="email" placeholder="enter your email" class="input text-center bg-[#FFFFFF0D]" required />
+                      </div>
+                      <div class="form-control mt-4">
+                        <button class=" btn border-none text-white bg-[#0E7A81]">Subscribe</button>
+                      </div>
+                    </form>
+                  </div>
+        </div>
+
+    </footer>
 
     <!-- Script link -->
     <script src="index.js"></script>
