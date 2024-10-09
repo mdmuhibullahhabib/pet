@@ -14,7 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- css -->
-     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -81,20 +81,63 @@
                     a.</p>
             </div>
 
-            <!-- cetagory -->
-             <nav id="categories" class="flex justify-around mt-6"></nav>
+            <!-- category -->
+            <nav id="categories" class="flex justify-around mt-6"></nav>
 
-            <div class="w-11/12 mx-auto flex justify-between mt-6">
+            <!-- spinner -->
+            <div id="spinner"></div>
+
+            <!-- sort -->
+            <nav id="sortByPrice" class="w-11/12 mx-auto flex justify-between mt-6">
                 <button class="font-bold">Best Deal For You</button>
-                <button class="btn text-white text-l bg-[#0E7A81]">Sort by Price</button>
-            </div>
+                <button onclick="sotPrice()" class="btn text-white text-l bg-[#0E7A81]">Sort by Price</button>
+            </nav>
+
+
         </section>
 
-        <section 
-        id="pets"
-        class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 py-10"></section>
+        <section class="lg:flex mx-auto space-x-5 lg:px-12 py-10">
+            <div id="pets" class="w-  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 "></div>
+
+
+            <div id="liked-pet"
+                class="w-48 border-2 rounded-lg border-gray-200 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2">
+            </div>
+        </section>
     </main>
 
+    <!-- Open the modal for details button -->
+    <button id="showModalData" class="btn hidden" onclick="my_modal_5.showModal()">open modal</button>
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <div id="modal-content">
+
+            </div>
+            <div class="modal-action flex justify-center">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="w-80 btn bg-[#0E7A811A] text-[#0E7A81]">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Open the modal for adopt button -->
+    <button id="showAdoptData" class="btn hidden" onclick="my_modal_1.showModal()">open modal</button>
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box">
+            <div id="adopt-content" class="flex justify-center ">
+                <div>
+                    <div class="flex justify-center" > 
+                    <img src="https://img.icons8.com/?size=100&id=BlnmI5EGBdss&format=png&color=000000" alt="">
+                    </div>
+                    <p class="py-4 text-center"><img src="" alt="">Adoption Process is Start for Your pet</p>
+                     <p id="countdownText" class="text-2xl font-bold text-center">3</p>
+                    </div>
+
+            </div>
+        </div>
+    </dialog>
 
     <!-- Footer Section -->
     <footer class="bg-black">
@@ -108,33 +151,35 @@
             </div>
 
             <div class="grid grid-cols-1">
-               <a class=" text-white text-l font-bold">Useful Links</a>
-               <a class="text-[#FFFFFF99]">Home</a>
-               <a class="text-[#FFFFFF99]">About Us</a>
-               <a class="text-[#FFFFFF99]">Animals</a>
-               <a class="text-[#FFFFFF99]">Foundation</a>
-               <a class="text-[#FFFFFF99]">Contact</a>
+                <a class=" text-white text-l font-bold">Useful Links</a>
+                <a class="text-[#FFFFFF99]">Home</a>
+                <a class="text-[#FFFFFF99]">About Us</a>
+                <a class="text-[#FFFFFF99]">Animals</a>
+                <a class="text-[#FFFFFF99]">Foundation</a>
+                <a class="text-[#FFFFFF99]">Contact</a>
             </div>
-             
-                <div class="">
-                    <form class="card-body pt-0">
-                        <div class="">
-                            <p class=" text-white text-l font-bold">Drop a Message</p>
-                        </div>
-                      <div class="form-control">
-                        <input type="email" placeholder="enter your email" class="input text-center bg-[#FFFFFF0D]" required />
-                      </div>
-                      <div class="form-control mt-4">
+
+            <div class="">
+                <form class="card-body pt-0">
+                    <div class="">
+                        <p class=" text-white text-l font-bold">Drop a Message</p>
+                    </div>
+                    <div class="form-control">
+                        <input type="email" placeholder="enter your email" class="input text-center bg-[#FFFFFF0D]"
+                            required />
+                    </div>
+                    <div class="form-control mt-4">
                         <button class=" btn border-none text-white bg-[#0E7A81]">Subscribe</button>
-                      </div>
-                    </form>
-                  </div>
+                    </div>
+                </form>
+            </div>
         </div>
 
     </footer>
 
     <!-- Script link -->
-    <script src="index.js"></script>
+    <script src="script.js"></script>
+    <!-- <script src="index.js"></script> -->
 
 </body>
 
