@@ -55,7 +55,8 @@ const loadDetails = (petId) => {
 }
 
 // adopt
-const loadAdopt= () =>{
+const loadAdopt= (button) =>{
+
   const adoptContainer =document.getElementById("adopt-content")
   adoptContainer.classList =""
   document.getElementById("showAdoptData").click();
@@ -65,23 +66,23 @@ const loadAdopt= () =>{
 const loadLikedPet =(petId) => {
   fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
   .then((res) => res.json())
-  .then((data) => displayLikedPet(data.petData));
+  .then((data) => displayLikedPet(data.petData.image));
 }
 
 // display Liked Pet
-const displayLikedPet = (petData) => {
+const displayLikedPet = (image) => {
   const likedContainer = document.getElementById("liked-pet")
   
   const div = document.createElement("div")
-  likedContainer.innerHTML = `
+  likedContainer.innerHTML += `
   <div class="w-24 h-24">
   <img
-      src=${petData.image}
+      src=${image}
       class="h-full w-full object-cover "
       alt="Shoes" />
   </div>
   `;
-  
+  console.log(image)
   likedContainer.appendChild(div);
 }
 
