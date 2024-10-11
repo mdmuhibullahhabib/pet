@@ -71,7 +71,7 @@
             </div>
         </section>
 
-        <!-- Cetagory Section -->
+        <!-- Category Section -->
         <section class=" text-center">
             <div class=" space-y-5">
                 <h1 class="text-3xl font-bold">Adopt Your Best Friend</h1>
@@ -85,19 +85,23 @@
             <nav id="categories" class="flex justify-around mt-6"></nav>
 
             <!-- spinner -->
-            <div id="spinner"></div>
+            <div id="showSpinner" class="">
+                <div id="spinner"></div>
+            </div>
+
 
             <!-- sort -->
             <nav id="sortByPrice" class="w-11/12 mx-auto flex justify-between mt-6">
                 <button class="font-bold">Best Deal For You</button>
                 <button onclick="sotPrice()" class="btn text-white text-l bg-[#0E7A81]">Sort by Price</button>
             </nav>
-
-
         </section>
 
         <section class="lg:flex mx-auto space-x-5 lg:px-12 py-10">
+
+            
             <div id="pets" class="w-  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 "></div>
+
 
             <!-- Liked pet -->
             <div id="liked-pet"
@@ -134,6 +138,12 @@
                     <p class="py-4 text-center"><img src="" alt="">Adoption Process is Start for Your pet</p>
                     <p id="countdownText" class="text-2xl font-bold text-center">3</p>
                 </div>
+
+                <div class="modal-action ">
+                    <form method="dialog">
+                      <button id="autoClickButton" hidden class="btn">Close</button>
+                    </form>
+                  </div>
 
             </div>
         </div>

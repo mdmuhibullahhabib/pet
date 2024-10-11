@@ -35,23 +35,18 @@ const loadCategoryPets = (category) => {
       activeBtn.classList.add("active");
       displayPets(data.data)
     });
-    
 }
 
-// spinner
-const loadCategoryPetsSpinner =() => {
+//All Pets spinner
+const loadAllPets =() => {
   document.getElementById("spinner").style.display = "block";
 
   setTimeout( function () {
-    loadCategoryPets()
+    loadAllPet()
   },2000)
 }
-
-// Load Details
-const loadDetails = (petId) => {
-  fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
-    .then((res) => res.json())
-    .then((data) => displayDetails(data.petData));
+const loadAllPet = () =>{
+  loadPets()
 }
 
 // adopt
@@ -62,11 +57,36 @@ const loadAdopt= (button) =>{
   document.getElementById("showAdoptData").click();
 }
 
+// auto  Click Button
+const button = document.getElementById('autoClickButton');
+const intervalId = setInterval(function() {
+  button.click(); 
+}, 3000);
+
+// Load Details
+const loadDetails = (petId) => {
+  fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
+    .then((res) => res.json())
+    .then((data) => displayDetails(data.petData));
+}
 // load Liked Pet
 const loadLikedPet =(petId) => {
   fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
   .then((res) => res.json())
   .then((data) => displayLikedPet(data.petData.image));
+}
+
+// Sort button
+const sotPrice = () => {
+  fetch('https://openapi.programming-hero.com/api/peddy/pets')
+    .then((res) => res.json())
+    .then((data) => sortDisplay(data.pets));
+}
+
+
+const sortDisplay = (pets) => {
+  pets.sort((a, b) => b.price - a.price);
+  displaySort(pets);
 }
 
 // display Liked Pet
@@ -85,8 +105,6 @@ const displayLikedPet = (image) => {
   console.log(image)
   likedContainer.appendChild(div);
 }
-
-
 
 // display details modal
 const displayDetails = (petData) => {
@@ -117,9 +135,45 @@ const displayDetails = (petData) => {
   document.getElementById("showModalData").click();
 }
 
+// display sort
+const displaySort = (pets) => {
+  const petContainer = document.getElementById("pets")
+  petContainer.innerHTML = "";
+pets.forEach((pet) => {
+  console.log(pet);
+
+  const card = document.createElement("div");
+  card.classList = "card card-compact"
+  card.innerHTML = `
+      <div class=" border rounded-md p-4">
+       <figure class="h-[200px] rounded-md ">
+  <img
+    src=${pet.image}
+    class="h-full w-full object-cover "
+    alt="Shoes" />
+</figure >
+<div class=" border-b pb-3">
+  <h1 class="text-xl font-bold pt-3">${pet.pet_name}</>
+  <p class="text-sm text-[#131313B3] font-normal pt-1"> <i class="fa-solid fa-table"></i> Breed: ${pet.breed}</p>
+  <p class="text-sm text-[#131313B3] font-normal pt-1"> <i class="fa-solid fa-calendar-days"></i> Birth: ${pet.date_of_birth}</p>
+  <p class="text-sm text-[#131313B3] font-normal pt-1"> <i class="fa-solid fa-venus"></i> Gender: ${pet.gender}</p>
+  <p class="text-sm text-[#131313B3] font-normal pt-1"> <i class="fa-solid fa-tags"></i> Price: ${pet.price}$</p>
+</div>
+  <div class="card-actions pt-3 flex justify-around">
+    <button onclick="loadLikedPet(${pet.petId})" class="btn bg-white hover:bg-green-400"><img src="https://img.icons8.com/?size=24&id=u8MTpAq972MG&format=png"></button>
+    <button onclick="loadAdopt()" class="btn bg-white text-[#0E7A81] ">Adopt</button>
+    <button onclick="loadDetails(${pet.petId})" class="btn bg-white text-[#0E7A81] ">Details</button>
+</div>
+<div> 
+  `;
+  petContainer.append(card)
+});
+};
 
 // display pets
 const displayPets = (pets) => {
+  document.getElementById("spinner").style.display = "none";
+
   const petContainer = document.getElementById("pets")
   petContainer.innerHTML = "";
 
@@ -138,7 +192,7 @@ const displayPets = (pets) => {
   else {
     petContainer.classList.add("grid")
   }
-
+  
   pets.forEach((pet) => {
     console.log(pet);
 
@@ -170,7 +224,6 @@ const displayPets = (pets) => {
   });
 };
 
-
 // display Catagories
 const displayCatagories = (categories) => {
   const categoryContainer = document.getElementById("categories")
@@ -192,4 +245,4 @@ const displayCatagories = (categories) => {
 }
 
 loadCatagories()
-loadPets();
+loadAllPets();
