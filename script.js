@@ -37,7 +37,7 @@ const loadCategoryPets = (category) => {
     });
 }
 
-//All Pets spinner
+// spinner
 const loadAllPets =() => {
   document.getElementById("spinner").style.display = "block";
 
@@ -59,7 +59,9 @@ const loadAdopt= (button) =>{
 
 // auto  Click Button
 const button = document.getElementById('autoClickButton');
-const intervalId = setInterval(function() {
+
+  const countdownDisplay = document.getElementById("countdownText")
+  setInterval(() => {
   button.click(); 
 }, 3000);
 
@@ -82,7 +84,6 @@ const sotPrice = () => {
     .then((res) => res.json())
     .then((data) => sortDisplay(data.pets));
 }
-
 
 const sortDisplay = (pets) => {
   pets.sort((a, b) => b.price - a.price);

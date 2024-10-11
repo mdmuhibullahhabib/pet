@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3-Second Countdown</title>
+  <style>
+    #countdown-display {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="countdown-display">Starting countdown...</div>
+  
+  <button id="autoClickButton">Adopt Me!</button>
+
+  <script>
+    const loadAdopt = (button) => {
+      const adoptContainer = document.getElementById("adopt-content");
+      if (adoptContainer) {
+        adoptContainer.classList = "";
+      }
+      document.getElementById("showAdoptData").click();
+    };
+
+    // Display 3-second countdown and auto-click the button
+    const button = document.getElementById('autoClickButton');
+    const countdownDisplay = document.getElementById('countdown-display');
+
+    let countdown = 3;
+
+    const countdownInterval = setInterval(() => {
+      if (countdown > 0) {
+        countdownDisplay.innerText = `${countdown}`;
+        countdown--;
+      } else {
+        clearInterval(countdownInterval);
+        countdownDisplay.innerText = "";
+        button.click(); // Auto-click the button after countdown reaches 0
+      }
+    }, 3000);
+  </script>
+</body>
+</html>
