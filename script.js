@@ -51,19 +51,58 @@ const loadAllPet = () =>{
 
 // adopt
 const loadAdopt= (button) =>{
+  const buttonClick = document.getElementById('countdownButton');
+  const interval = setInterval(function() {
+      buttonClick.click();
+      clearInterval(interval)
+  });
+  loadAdoptModal()
+}
 
-  const adoptContainer =document.getElementById("adopt-content")
-  adoptContainer.classList =""
-  document.getElementById("showAdoptData").click();
+// CountDown
+const loadAdoptModal= (button) =>{
+  const countdownDisplay = document.getElementById('countdownDisplay');
+  
+  countdownButton.addEventListener('click', () => {
+    countdownDisplay.textContent = '3';
+  
+    const countdownInterval = setInterval(() => {
+      const currentCount = parseInt(countdownDisplay.textContent);
+  
+      if (currentCount === 0) {
+        clearInterval(countdownInterval);
+        countdownDisplay.textContent = '';
+      } else {
+        countdownDisplay.textContent = currentCount - 1;
+      }
+    }, 1000);
+  });
 }
 
 // auto  Click Button
 const button = document.getElementById('autoClickButton');
-
-  const countdownDisplay = document.getElementById("countdownText")
-  setInterval(() => {
+const intervalId = setInterval(function() {
   button.click(); 
-}, 3000);
+}, 3800);
+
+
+// const countdownButton = document.getElementById('countdownButton');
+// const countdownDisplay = document.getElementById('countdownDisplay');
+
+// countdownButton.addEventListener('click', () => {
+//   countdownDisplay.textContent = '3';
+
+//   const countdownInterval = setInterval(() => {
+//     const currentCount = parseInt(countdownDisplay.textContent);
+
+//     if (currentCount === 0) {
+//       clearInterval(countdownInterval);
+//       countdownDisplay.textContent = '';
+//     } else {
+//       countdownDisplay.textContent = currentCount - 1;
+//     }
+//   }, 1000);
+// });
 
 // Load Details
 const loadDetails = (petId) => {
